@@ -1,0 +1,12 @@
+../Core/Src/main.c:74:8:write_to_backup_sram	3
+../Core/Src/main.c:96:8:read_from_backup_sram	3
+../Core/Src/main.c:122:5:main	1
+../Core/Src/main.c:219:6:SystemClock_Config	3
+../Core/Src/main.c:266:13:MX_ADC1_Init	3
+../Core/Src/main.c:316:13:MX_DMA_Init	1
+../Core/Src/main.c:334:13:MX_GPIO_Init	1
+../Core/Src/main.c:368:6:HAL_ADC_ConvCpltCallback	1
+../Core/Src/main.c:381:6:blinkLed	1
+../Core/Src/main.c:400:6:readADC	1
+../Core/Src/main.c:423:6:monitorButton	5
+../Core/Src/main.c:455:6:Error_Handler	1

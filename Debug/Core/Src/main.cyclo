@@ -10,4 +10,4 @@
 ../Core/Src/main.c:433:6:blinkLed	1
 ../Core/Src/main.c:452:6:readADC	1
 ../Core/Src/main.c:475:6:monitorButton	5
-../Core/Src/main.c:508:6:Error_Handler	1
+../Core/Src/main.c:519:6:Error_Handler	1

@@ -154,8 +154,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   ST7789_Init();
   ST7789_SetRotation(2);
-  ST7789_Fill_Color(WHITE);
-  ST7789_WriteString(10, 10, "hello word", Font_7x10, WHITE, BLUE);
+  ST7789_Fill_Color(BLACK);
+//  ST7789_WriteString(10, 10, "KPS", Font_7x10, RED, BLACK);
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -477,6 +477,7 @@ void monitorButton(void const * argument)
   /* USER CODE BEGIN monitorButton */
   /* Infinite loop */
 	float vol = 0.0;
+	char buffer[16];
   for(;;)
   {
 	  osSemaphoreWait(flashWriteCompletedSemaphoreHandle, osWaitForever);
@@ -486,6 +487,16 @@ void monitorButton(void const * argument)
 		  if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_RESET) {
 			  read_from_backup_sram(rx_data, ADC_BUF_LEN, 0);
 			  vol = ((float)rx_data[0]/4096.0)*3.3;
+
+			  vol *= 100.0;
+			  uint32_t nguyen = vol / 100;
+			  uint32_t thapphan = (uint32_t)vol % 100;
+			  sprintf(buffer, "Lasted voltage value: %d.%02d", nguyen, thapphan);
+			  ST7789_Fill(10, 20, 240, 40, BLACK);
+			  ST7789_WriteString(10, 10, "KPS", Font_7x10, RED, BLACK);
+			  ST7789_WriteString(10, 20, buffer, Font_7x10, RED, BLACK);
+
+
 			  if(vol > 1.0)
 				  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
 			  else
